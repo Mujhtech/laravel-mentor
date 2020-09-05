@@ -23,6 +23,10 @@ class MentorInstallCommand extends Command
 
     protected $assets_package_path = 'public/laravel-mentor/assets/';
 
+    protected $views_path = 'vendor/laravel-mentor/assets/';
+
+    protected $views_package_path = 'public/laravel-mentor/assets/';
+
     protected $authViews = [
         'auth/login.blade.php'             => '@extends(\'laravel-mentor::auth.login\')',
         'auth/register.blade.php'          => '@extends(\'laravel-mentor::auth.register\')',
@@ -155,17 +159,14 @@ class MentorInstallCommand extends Command
                 return;
             }
         }
-        foreach ($this->basicViews as $key => $value) {
-            if (file_exists($view = $this->getViewPath($value)) && ! $this->option('force')) {
-                if (! $this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
-                    continue;
-                }
-            }
-            copy(
-                $this->packagePath('/resources/views/'.$key.''),
-                $view
-            );
-        }
+
+        CommandHelper::copyDirectory(
+            $this->packagePath('resources/views/basic'),
+            base_path('resources/views/vendor/laravel-mentor/basic'),
+            $this->option('force'),
+            true
+        );
+
         $this->comment('Basic views installed successfully.');
     }
 
