@@ -23,6 +23,19 @@ class MentorInstallCommand extends Command
 
     protected $assets_package_path = 'public/laravel-mentor/assets/';
 
+    protected $authViews = [
+        'auth/login.blade.php'             => '@extends(\'laravel-mentor::auth.login\')',
+        'auth/register.blade.php'          => '@extends(\'laravel-mentor::auth.register\')',
+        'auth/verify.blade.php'            => '@extends(\'laravel-mentor::auth.verify\')',
+        'auth/passwords/confirm.blade.php' => '@extends(\'laravel-mentor::auth.passwords.confirm\')',
+        'auth/passwords/email.blade.php'   => '@extends(\'laravel-mentor::auth.passwords.email\')',
+        'auth/passwords/reset.blade.php'   => '@extends(\'laravel-mentor::auth.passwords.reset\')',
+    ];
+
+    protected $basicViews = [
+        'home.profile' => 'profile.blade.php',
+    ];
+
     protected $assets = [
         'css' => [
             'name' => 'Css Folder',
@@ -78,6 +91,18 @@ class MentorInstallCommand extends Command
             $this->exportConfig();
         }
 
+        if ($this->option('with')) {
+            if (in_array('main_views', $this->option('with'))) {
+                $this->exportMainViews();
+            }
+            if (in_array('auth_views', $this->option('with'))) {
+                $this->exportAuthViews();
+            }
+            if (in_array('basic_views', $this->option('with'))) {
+                $this->exportBasicViews();
+            }
+        }
+
         $this->info('Laravel Mentor Installation complete.');
     }
 
@@ -112,7 +137,7 @@ class MentorInstallCommand extends Command
     protected function exportAuthViews()
     {
         if ($this->option('interactive')) {
-            if (! $this->confirm('Install AdminLTE authentication views?')) {
+            if (! $this->confirm('Install Laravel Mentor authentication views?')) {
                 return;
             }
         }
@@ -121,6 +146,27 @@ class MentorInstallCommand extends Command
             file_put_contents($this->getViewPath($file), $content);
         }
         $this->comment('Authentication views installed successfully.');
+    }
+
+    protected function exportBasicViews()
+    {
+        if ($this->option('interactive')) {
+            if (! $this->confirm('Install Laravel Mentor basic views?')) {
+                return;
+            }
+        }
+        foreach ($this->basicViews as $key => $value) {
+            if (file_exists($view = $this->getViewPath($value)) && ! $this->option('force')) {
+                if (! $this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
+                    continue;
+                }
+            }
+            copy(
+                $this->packagePath('/resources/views/'.$key.''),
+                $view
+            );
+        }
+        $this->comment('Basic views installed successfully.');
     }
 
 

@@ -5,7 +5,7 @@
 <head>
     <title>
         @yield('title_prefix', config('laravel-mentor.title_prefix', ''))
-        @yield('title', 'Login')
+        @yield('title', 'Register')
     </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -49,11 +49,29 @@
                                     <div class="login p-50">
                                         <h1 class="mb-2">We Are Mentor</h1>
                                         <p>Welcome back, please login to your account.</p>
-                                        <form action="" class="mt-3 mt-sm-5">
+                                        <form action="" class="mt-2 mt-sm-5">
                                             <div class="row">
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">First Name*</label>
+                                                        <input type="text" class="form-control" placeholder="First Name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Last Name*</label>
+                                                        <input type="text" class="form-control" placeholder="Last Name" />
+                                                    </div>
+                                                </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="control-label">User Name*</label>
+                                                        <label class="control-label">Email*</label>
+                                                        <input type="email" class="form-control" placeholder="Email" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Username*</label>
                                                         <input type="text" class="form-control" placeholder="Username" />
                                                     </div>
                                                 </div>
@@ -64,21 +82,18 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <div class="d-block d-sm-flex  align-items-center">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                                                            <label class="form-check-label" for="gridCheck">
-                                                                Remember Me
-                                                            </label>
-                                                        </div>
-                                                        <a href="javascript:void(0);" class="ml-auto">Forgot Password ?</a>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                                        <label class="form-check-label" for="gridCheck">
+                                                            I accept terms & policy
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mt-3">
-                                                    <a href="index.html" class="btn btn-primary text-uppercase">Sign In</a>
+                                                    <a href="auth-login.html" class="btn btn-primary text-uppercase">Sign up</a>
                                                 </div>
                                                 <div class="col-12  mt-3">
-                                                    <p>Don't have an account ?<a href="auth-register.html"> Sign Up</a></p>
+                                                    <p>Already have an account ?<a href="auth-login.html"> Sign In</a></p>
                                                 </div>
                                             </div>
                                         </form>
