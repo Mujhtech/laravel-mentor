@@ -20,20 +20,11 @@
                 </nav>
             </div>
             <div class="ml-auto d-flex align-items-center secondary-menu text-center">
-                <a href="javascript:void(0);" class="tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Todo list">
-                    <i class="fe fe-edit btn btn-icon text-primary"></i>
+                <a href="{{ url(config('laravel-mentor.usermenu_profile_url', '#')) }}" class="tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Profile">
+                    <i class="fe fe-user btn btn-icon text-primary"></i>
                 </a>
-                <a href="javascript:void(0);" class="tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Projects">
-                    <i class="fa fa-lightbulb-o btn btn-icon text-success"></i>
-                </a>
-                <a href="javascript:void(0);" class="tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Task">
-                    <i class="fa fa-check btn btn-icon text-warning"></i>
-                </a>
-                <a href="javascript:void(0);" class="tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Calendar">
-                    <i class="fa fa-calendar-o btn btn-icon text-cyan"></i>
-                </a>
-                <a href="javascript:void(0);" class="tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Analytics">
-                    <i class="fa fa-bar-chart-o btn btn-icon text-danger"></i>
+                <a href="{{ url(config('laravel-mentor.logout_url', '#')) }}" class="tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
+                    <i class=" ti ti-settings btn btn-icon text-info"></i>
                 </a>
             </div>
         </div>
