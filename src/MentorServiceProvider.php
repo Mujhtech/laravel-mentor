@@ -36,7 +36,7 @@ class MentorServiceProvider extends ServiceProvider
         $this->loadConfig();
         $this->loadPublic();
         $this->registerCommands();
-        $this->registerViewComposers($view);
+        //$this->registerViewComposers($view);
 
         Blade::component('laravel-mentor_alert', AlertComponent::class);
         Blade::component('laravel-mentor_gradient_alert', GradientAlertComponent::class);
@@ -78,6 +78,6 @@ class MentorServiceProvider extends ServiceProvider
 
     private function registerViewComposers(Factory $view)
     {
-        $view->composer('laravel-mentor::page', AdminLteComposer::class);
+        //$view->composer('laravel-mentor::page', AdminLteComposer::class);
     }
 }

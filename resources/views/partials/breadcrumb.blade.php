@@ -5,7 +5,7 @@
         <!-- begin page title -->
         <div class="d-block d-lg-flex flex-nowrap align-items-center">
             <div class="page-title mr-4 pr-4 border-right">
-                <h1>Dashboard</h1>
+                <h1>@yield('breadcrum')</h1>
             </div>
             <div class="breadcrumb-bar align-items-center">
                 <nav>
@@ -14,7 +14,7 @@
                             <a href="index.html"><i class="ti ti-home"></i></a>
                         </li>
                         <li class="breadcrumb-item active text-primary" aria-current="page">
-                            Dashboard
+                            @yield('breadcrum')
                         </li>
                     </ol>
                 </nav>
