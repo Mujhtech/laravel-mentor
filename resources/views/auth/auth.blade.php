@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
+
 <head>
     <title>
         @yield('title_prefix', config('laravel-mentor.title_prefix', ''))
-        @yield('title', config('laravel-mentor.title', 'Coming Soon'))
+        @yield('title', config('laravel-mentor.title', 'Laravel Mentor'))
     </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -11,7 +13,7 @@
     <meta name="author" content="Potenza Global Solutions" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- app favicon -->
-    <link rel="shortcut icon" href="vendor/laravel-mentor/assets/img/favicon.ico">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <!-- plugin stylesheets -->
@@ -19,49 +21,43 @@
     <!-- app style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/laravel-mentor/assets/css/style.css') }}" />
 </head>
+
 <body class="bg-white">
     <!-- begin app -->
     <div class="app">
         <!-- begin app-wrap -->
         <div class="app-wrap">
+            @if(config('laravel-mentor.enable_preloader'))
             <!-- begin pre-loader -->
             <div class="loader">
                 <div class="h-100 d-flex justify-content-center">
                     <div class="align-self-center">
-                        <img src="assets/img/loader/loader.svg" alt="loader">
+                        <img src="{{ asset('vendor/laravel-mentor/assets/img/loader/loader.svg') }}" alt="loader">
                     </div>
                 </div>
             </div>
             <!-- end pre-loader -->
+            @endif
 
             <!--start login contant-->
             <div class="app-contant">
                 <div class="bg-white">
                     <div class="container-fluid p-0">
                         <div class="row no-gutters">
-                            <div class="col-sm-6 col-lg-5 col-xl-3  align-self-center order-2 order-sm-1">
+                            <div class="col-sm-6 col-lg-5 col-xxl-3  align-self-center order-2 order-sm-1">
                                 <div class="d-flex align-items-center h-100-vh">
-                                    <div class="login p-50 w-100">
-                                        <div class="bg-img">
-                                            <img src="{{ asset('vendor/laravel-mentor/assets/img/avtar/01.jpg') }}" class="img-fluid" alt="Clients-01">
-                                        </div>
-                                        <h4 class="mt-4">Michael Bean</h4>
-                                        <span class="mt-1"><i class="fa fa-lock"></i> Locked</span>
-                                        <p class="mt-4 mb-0">You must enter your password to access admin screen</p>
-                                        <div class="input-group my-3">
-                                            <input type="text" class="form-control" placeholder="Enter Password" aria-label="" aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="basic-addon2"><i class="fa fa-unlock"></i></span>
-                                            </div>
-                                        </div>
-                                        <p class="mt-4 mb-0">Or sign in as a <a class="text-primary" href="auth-login.html">Different user</a></p>
+                                    <div class="login p-50">
+                                        <h1 class="mb-2">We Are {{ config('laravel-mentor.title', 'Laravel Mentor') }}</h1>
+
+                                        @yield('content')
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-xl-9 col-lg-7 bg-gradient o-hidden order-1 order-sm-2">
+                            <div class="col-sm-6 col-xxl-9 col-lg-7 bg-gradient o-hidden order-1 order-sm-2">
                                 <div class="row align-items-center h-100">
                                     <div class="col-7 mx-auto ">
-                                        <img class="img-fluid" src="{{ asset('vendor/laravel-mentor/assets/img/bg/login.svg') }}" alt="">
+                                        <img class="img-fluid" src="{{ asset('vendror/laravel-mentor/assets/img/bg/login.svg') }}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -75,11 +71,14 @@
     </div>
     <!-- end app -->
 
-    <!-- plugins -->
-        <!-- plugins -->
-        <script src="{{ asset('vendor/laravel-mentor/assets/js/vendors.js') }}"></script>
 
-        <!-- custom app -->
-        <script src="{{ asset('vendor/laravel-mentor/assets/js/app.js') }}"></script>
-    </body>
+
+    <!-- plugins -->
+    <script src="{{ asset('vendror/laravel-mentor/assets/js/vendors.js') }}"></script>
+
+    <!-- custom app -->
+    <script src="{{ asset('vendor/laravel-mentor/assets/js/app.js') }}"></script>
+</body>
+
+
 </html>
