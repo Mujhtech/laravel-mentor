@@ -1,8 +1,8 @@
 @extends('laravel-mentor::page')
 
-@section('title', 'Table')
+@section('title', 'Team')
 
-@section('breadcrum', 'Table')
+@section('breadcrum', 'Team')
 
 @section('content')
 <div class="row">
