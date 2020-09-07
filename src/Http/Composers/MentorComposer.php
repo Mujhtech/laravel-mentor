@@ -8,7 +8,7 @@ use Mujhtech\LaravelMentor\Mentor;
 class MentorComposer
 {
     /**
-     * @var AdminLte
+     * @var LaravelMentor
      */
     private $mentor;
 
