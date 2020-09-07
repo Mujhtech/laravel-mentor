@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Mujhtech\LaravelMentor\View\Components\Alert as AlertComponent;
 use Mujhtech\LaravelMentor\View\Components\GradientAlert as GradientAlertComponent;
 use Mujhtech\LaravelMentor\Http\Composers\MentorComposer;
+use Mujhtech\LaravelMentor\Events\BuildingMenu;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -80,5 +81,21 @@ class MentorServiceProvider extends ServiceProvider
     private function registerViewComposers(Factory $view)
     {
         $view->composer('laravel-mentor::page', MentorComposer::class);
+    }
+
+
+    private static function registerMenu(Dispatcher $events, Repository $config)
+    {
+        // Register a handler for the BuildingMenu event, this handler will add
+        // the menu defined on the config file to the menu builder instance.
+
+        $events->listen(
+            BuildingMenu::class,
+            function (BuildingMenu $event) use ($config) {
+                $menu = $config->get('laravel-mentor.menu', []);
+                $menu = is_array($menu) ? $menu : [];
+                $event->menu->add(...$menu);
+            }
+        );
     }
 }
